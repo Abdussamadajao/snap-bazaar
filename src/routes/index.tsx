@@ -136,30 +136,30 @@ export const routes: RouteObject[] = [
                 index: true,
                 element: <></>,
               },
-              //   {
-              //     path: PATH.account.settings,
-              //     element: <Settings />,
-              //   },
-              //   {
-              //     path: PATH.account.orders,
-              //     element: <OrdersPage />,
-              //   },
-              //   {
-              //     path: PATH.account.profile,
-              //     element: <Profile />,
-              //   },
-              //   {
-              //     path: PATH.account.wishlist,
-              //     element: <Wishlist />,
-              //   },
-              //   {
-              //     path: PATH.account.reviews,
-              //     element: <Reviews />,
-              //   },
-              //   {
-              //     path: PATH.account.orderDetails(":id"),
-              //     element: <OrderDetailsPage />,
-              //   },
+              {
+                path: PATH.account.settings,
+                element: <Settings />,
+              },
+              {
+                path: PATH.account.orders,
+                element: <OrdersPage />,
+              },
+              {
+                path: PATH.account.profile,
+                element: <Profile />,
+              },
+              {
+                path: PATH.account.wishlist,
+                element: <Wishlist />,
+              },
+              {
+                path: PATH.account.reviews,
+                element: <Reviews />,
+              },
+              {
+                path: PATH.account.orderDetails(":id"),
+                element: <OrderDetailsPage />,
+              },
             ],
           },
         ],
