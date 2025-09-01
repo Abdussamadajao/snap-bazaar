@@ -33,7 +33,7 @@ import { Profile, Settings, Wishlist, Reviews } from "../pages/Account";
 import OrdersPage from "../pages/Account/OrdersPage";
 
 // Layouts
-import { PATH, PATH_AUTH } from "./path";
+import { PATH, PATH_AUTH } from "./paths";
 import AuthRoute from "@/guards/AuthRoute";
 import OrderDetailsPage from "@/pages/Account/OrderDetailsPage";
 
