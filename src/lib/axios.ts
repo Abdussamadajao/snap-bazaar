@@ -5,7 +5,7 @@ import { storeManager } from "./store-manager";
 
 function createAxiosInstance() {
   const instance = axios.create({
-    baseURL: "/api",
+    baseURL: import.meta.env.VITE_API_URL,
     timeout: 10_000,
     withCredentials: true,
   });
