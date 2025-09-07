@@ -33,11 +33,11 @@ export const ProtectedRoute: React.FC = () => {
   }, [error]);
 
   useEffect(() => {
-    if (!isPending && !data) {
+    if (!isPending && !data && !error) {
       console.log("No session data available, logging out");
       onLogOut();
     }
-  }, [isPending, data]);
+  }, [isPending, data, error]);
 
   if (isPending) {
     return (
