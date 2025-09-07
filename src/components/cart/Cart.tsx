@@ -160,7 +160,7 @@ const MobileCart: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
 }) => {
   const { items: cartItems, totalPrice } = useCartStore();
   const { updateQuantity, removeFromCart } = useCartMutations();
-
+  const navigate = useNavigate();
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent side="bottom" className="h-[85vh] rounded-t-3xl">
@@ -262,7 +262,10 @@ const MobileCart: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
                   {formatNGN(totalPrice)}
                 </span>
               </div>
-              <Button className="w-full bg-primary hover:bg-primary-foreground py-4 text-lg font-medium rounded-xl">
+              <Button
+                onClick={() => navigate(PATH.cart)}
+                className="w-full bg-primary hover:bg-primary-foreground py-4 text-lg font-medium rounded-xl"
+              >
                 Checkout
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
