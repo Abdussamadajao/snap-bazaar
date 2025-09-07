@@ -13,12 +13,6 @@ export const ProtectedRoute: React.FC = () => {
 
   const { setAuth, logout, isAuthenticated } = useAuthStore();
 
-  useEffect(() => {
-    if (!data) return;
-
-    setAuth({ user: data.user as unknown as any, session: data.session });
-  }, [data, setAuth]);
-
   function onLogOut() {
     toast.error("Session expired, please login again");
     logout();
@@ -26,18 +20,26 @@ export const ProtectedRoute: React.FC = () => {
   }
 
   useEffect(() => {
-    if (!error) return;
+    // Don't do anything while loading
+    if (isPending) return;
 
-    console.error("Session error:", error);
-    onLogOut();
-  }, [error]);
-
-  useEffect(() => {
-    if (!isPending && !data && !error) {
-      console.log("No session data available, logging out");
-      onLogOut();
+    // Handle successful authentication
+    if (data) {
+      setAuth({ user: data.user as unknown as any, session: data.session });
+      return;
     }
-  }, [isPending, data, error]);
+
+    // Handle errors
+    if (error) {
+      console.error("Session error:", error);
+      onLogOut();
+      return;
+    }
+
+    // Handle no data after loading is complete
+    console.log("No session data available, logging out");
+    onLogOut();
+  }, [isPending, data, error, setAuth]);
 
   if (isPending) {
     return (
