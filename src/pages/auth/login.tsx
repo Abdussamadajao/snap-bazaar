@@ -77,8 +77,8 @@ const Login: React.FC = () => {
     setUnverifiedEmail(null);
     clearError();
 
-    await authClient.signIn
-      .email(
+    try {
+      const result = await authClient.signIn.email(
         { email: data.email, password: data.password },
         {
           onSuccess: (context) => {
@@ -102,10 +102,13 @@ const Login: React.FC = () => {
             toast.error(context.error.message);
           },
         }
-      )
-      .finally(() => {
-        setIsLoading(false);
-      });
+      );
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("An unexpected error occurred during login");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

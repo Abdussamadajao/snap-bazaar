@@ -17,7 +17,7 @@ export const ProtectedRoute: React.FC = () => {
     if (!data) return;
 
     setAuth({ user: data.user as unknown as any, session: data.session });
-  }, [data]);
+  }, [data, setAuth]);
 
   function onLogOut() {
     toast.error("Session expired, please login again");
@@ -28,11 +28,13 @@ export const ProtectedRoute: React.FC = () => {
   useEffect(() => {
     if (!error) return;
 
+    console.error("Session error:", error);
     onLogOut();
   }, [error]);
 
   useEffect(() => {
     if (!isPending && !data) {
+      console.log("No session data available, logging out");
       onLogOut();
     }
   }, [isPending, data]);
